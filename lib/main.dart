@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qube_bidding/splash_screen.dart';
+import 'package:qube_bidding/screens/splash_screen.dart';
 
 void main() {
   return runApp(const MyApp());

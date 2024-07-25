@@ -38,7 +38,6 @@ class GridAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       width: 60.0,
       height: 100.0,
       decoration: const BoxDecoration(

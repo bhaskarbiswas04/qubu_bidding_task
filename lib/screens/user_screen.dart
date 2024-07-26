@@ -23,7 +23,7 @@ class UserScreen extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => const HomeScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black),
@@ -44,7 +44,7 @@ class UserScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(35)),
                     color: Color(0xffA0E9FF),
                     image: DecorationImage(
-                        image: AssetImage('assets/avatarImg1.png')),
+                        image: AssetImage('assets/avatars/avatarImg1.png')),
                   ),
                 ),
                 const SizedBox(
@@ -55,7 +55,6 @@ class UserScreen extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.2),
-                        // spreadRadius:,
                         blurRadius: 10,
                         offset:
                             const Offset(0, 3), // changes position of shadow

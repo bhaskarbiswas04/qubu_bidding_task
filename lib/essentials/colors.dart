@@ -44,7 +44,8 @@ class GridAvatar extends StatelessWidget {
         shape: BoxShape.rectangle,
         borderRadius: BorderRadius.all(Radius.circular(35)),
         color: Color(0xffA0E9FF),
-        image: DecorationImage(image: AssetImage('assets/avatarImg1.png')),
+        image:
+            DecorationImage(image: AssetImage('assets/avatars/avatarImg2.png')),
       ),
     );
   }

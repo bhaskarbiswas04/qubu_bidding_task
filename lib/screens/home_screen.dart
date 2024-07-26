@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qube_bidding/essentials/app_bar.dart';
 import 'package:qube_bidding/essentials/card_style.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -53,6 +54,24 @@ class HomeScreen extends StatelessWidget {
               children: [
                 SetAppbar(),
                 SizedBox(height: 8),
+                FlutterCarousel(
+                  items: const [
+                    CardStyle(),
+                    CardStyle(),
+                    CardStyle(),
+                    CardStyle()
+                  ],
+                  options: CarouselOptions(
+                    height: 490,
+                    viewportFraction: 1.0,
+                    autoPlay: true,
+                    floatingIndicator: true,
+                    enableInfiniteScroll: true,
+                    autoPlayInterval: Duration(seconds: 2),
+                    // controller: _controller,
+                    slideIndicator: CircularWaveSlideIndicator(),
+                  ),
+                ),
                 CardStyle(),
                 CardStyle(),
               ],

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qube_bidding/essentials/app_bar.dart';
 import 'package:qube_bidding/essentials/card_style.dart';
-// import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:qube_bidding/essentials/widgets.dart';
+import 'package:qube_bidding/screens/wallet_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,36 +15,18 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.home,
-                  size: 30,
-                  color: Colors.black,
-                ),
-                label: const Text(
-                  'Home',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.wallet,
-                  size: 30,
-                  color: Colors.black,
-                ),
-                label: const Text(
-                  'Wallet',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
+              EleButton(icon: Icons.home, text: 'Home', onTap: () {}),
+              EleButton(
+                  icon: Icons.wallet,
+                  text: 'Wallet',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WalletScreen(),
+                      ),
+                    );
+                  }),
             ],
           )
         ],
@@ -52,8 +35,8 @@ class HomeScreen extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               children: [
-                SetAppbar(),
-                SizedBox(height: 8),
+                const SetAppbar(),
+                const SizedBox(height: 8),
                 FlutterCarousel(
                   items: const [
                     CardStyle(),
@@ -67,8 +50,7 @@ class HomeScreen extends StatelessWidget {
                     autoPlay: true,
                     floatingIndicator: true,
                     enableInfiniteScroll: true,
-                    autoPlayInterval: Duration(seconds: 2),
-                    // controller: _controller,
+                    autoPlayInterval: const Duration(seconds: 9),
                     slideIndicator: CircularWaveSlideIndicator(),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qube_bidding/essentials/cardBottomStyle.dart';
 import 'package:qube_bidding/essentials/cardTopStyle.dart';
+import 'package:qube_bidding/screens/panel_content_screen.dart';
 
 class CardStyle extends StatelessWidget {
   const CardStyle({super.key});
@@ -12,8 +13,16 @@ class CardStyle extends StatelessWidget {
         children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/homeImage.png',
+              child: GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) => const PanelContentScreen(),
+                  );
+                },
+                child: Image.asset(
+                  'assets/homeImage.png',
+                ),
               )),
           const Column(
             //This is the main column

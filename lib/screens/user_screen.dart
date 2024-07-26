@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qube_bidding/essentials/colors.dart';
 import 'package:qube_bidding/screens/home_screen.dart';
+import 'package:qube_bidding/essentials/widgets.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});

@@ -29,24 +29,3 @@ class ColorContainer extends StatelessWidget {
     );
   }
 }
-
-class GridAvatar extends StatelessWidget {
-  const GridAvatar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 60.0,
-      height: 100.0,
-      decoration: const BoxDecoration(
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(35)),
-        color: Color(0xffA0E9FF),
-        image:
-            DecorationImage(image: AssetImage('assets/avatars/avatarImg2.png')),
-      ),
-    );
-  }
-}

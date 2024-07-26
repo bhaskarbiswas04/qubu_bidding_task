@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qube_bidding/screens/panel_content_screen.dart';
 import 'package:qube_bidding/screens/home_screen.dart';
 import 'package:qube_bidding/screens/splash_screen.dart';
 import 'package:qube_bidding/screens/user_screen.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UserScreen(),
+      home: SplashScreen(),
     );
   }
 }

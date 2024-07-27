@@ -52,3 +52,79 @@ class GridAvatar extends StatelessWidget {
     );
   }
 }
+
+class LogoAndName extends StatelessWidget {
+  const LogoAndName({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(
+          'assets/qubeLogo.png',
+          height: 60,
+          width: 60,
+        ),
+        const Text(
+          'Qube Bidding',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        )
+      ],
+    );
+  }
+}
+
+class WalletBalance extends StatelessWidget {
+  const WalletBalance({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 18),
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Color.fromARGB(255, 187, 185, 185)),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Column(
+            children: [
+              Text(
+                'Wallet Balance',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                '₹10,000',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          ElevatedButton.icon(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+              ),
+              icon: const Icon(
+                Icons.add_circle,
+                color: Colors.white,
+                size: 30,
+              ),
+              label: const Text(
+                'Add Money',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+}

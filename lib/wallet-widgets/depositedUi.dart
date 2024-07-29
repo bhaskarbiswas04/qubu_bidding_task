@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +26,7 @@ class DepositedUi extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              Text(
+              const Text(
                 "Money Deposited                                          ",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
@@ -41,7 +39,7 @@ class DepositedUi extends StatelessWidget {
                     decoration: const BoxDecoration(
                         color: Color.fromARGB(255, 209, 208, 208),
                         borderRadius: BorderRadius.all(Radius.circular(5))),
-                    child: Text('source'),
+                    child: const Text('Qube Bidding'),
                   ),
                   const SizedBox(width: 110),
                   Text(

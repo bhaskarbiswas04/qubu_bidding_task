@@ -55,6 +55,7 @@ class _WalletBalanceState extends State<WalletBalance> {
                 double newAmount =
                     double.tryParse(_amountController.text) ?? 0.0;
                 context.read<BalanceModel>().addMoney(newAmount);
+                _amountController.clear();
                 Navigator.of(context).pop();
               },
             ),

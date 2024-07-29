@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qube_bidding/screens/home_screen.dart';
 import 'package:qube_bidding/screens/panel_content_screen.dart';
 import 'package:qube_bidding/screens/splash_screen.dart';
-import 'package:qube_bidding/screens/wallet_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
 

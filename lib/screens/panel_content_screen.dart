@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
 
+class BidAmount with ChangeNotifier {
+  double _bidAmount = 0.0;
+
+  double get bidAmount => _bidAmount;
+
+  void setBidAmount(double newBidAmount) {
+    _bidAmount = newBidAmount;
+    notifyListeners();
+  }
+}
+
 class PanelContentScreen extends StatelessWidget {
   PanelContentScreen({super.key});
 
@@ -61,6 +72,11 @@ class PanelContentScreen extends StatelessWidget {
                 // Get bid amount from TextFormField
                 final bidAmount =
                     double.tryParse(bidAmountController.text) ?? 0.0;
+
+                // Update bid amount in the state management class
+                final bidAmountProvider =
+                    Provider.of<BidAmount>(context, listen: false);
+                bidAmountProvider.setBidAmount(bidAmount);
 
                 // Check if bid amount is valid and sufficient
                 if (bidAmount <= 0) {

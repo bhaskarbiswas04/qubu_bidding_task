@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qube_bidding/screens/panel_content_screen.dart';
+import 'package:provider/provider.dart';
 
 class Bids {
   final double bidAmount;
@@ -12,6 +14,8 @@ class BidPlacedUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bidAmount = Provider.of<BidAmount>(context).bidAmount;
+
     return Row(
       children: [
         ClipRRect(
@@ -50,10 +54,11 @@ class BidPlacedUi extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: const Text('Bid #2'),
                 ),
-                const SizedBox(width: 160),
-                const Text(
-                  '-₹545',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                const SizedBox(width: 150),
+                Text(
+                  '-₹${bidAmount.toStringAsFixed(1)}',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),

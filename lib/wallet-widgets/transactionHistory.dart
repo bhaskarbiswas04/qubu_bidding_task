@@ -18,7 +18,7 @@ class TransactionHistory extends StatelessWidget {
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 15),
-        // const BidPlacedUi(),
+        const BidPlacedUi(),
         const SizedBox(height: 15),
         const Divider(height: 7, color: Color.fromARGB(255, 224, 222, 222)),
         const SizedBox(height: 15),

@@ -14,7 +14,7 @@ class DepositedUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final balanceModel = context.watch<BalanceModel>();
+    // final balanceModel = context.watch<BalanceModel>();
     return Row(
       children: [
         const SizedBox(width: 20),

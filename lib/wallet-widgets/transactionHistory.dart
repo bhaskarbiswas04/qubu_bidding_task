@@ -68,14 +68,12 @@ class TransactionHistory extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 15),
-        const Divider(
-          height: 7,
-          color: Color.fromARGB(255, 224, 222, 222),
-        ),
+        const Divider(height: 7, color: Color.fromARGB(255, 224, 222, 222)),
         const SizedBox(height: 15),
         ListView.builder(
           shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(), // Prevent inner scroll
+          // scrollDirection: Axis.vertical,
+          physics: const ClampingScrollPhysics(), // Prevent inner scroll
           itemCount: balanceModel.deposits.reversed.length,
           itemBuilder: (context, index) {
             final deposit = balanceModel.deposits.reversed.toList()[index];

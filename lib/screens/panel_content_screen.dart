@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
 
 class PanelContentScreen extends StatelessWidget {
-  const PanelContentScreen({super.key});
+  PanelContentScreen({super.key});
+
+  final TextEditingController bidAmountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +19,7 @@ class PanelContentScreen extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           TextFormField(
+            controller: bidAmountController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               hintText: 'Enter Bid Price',
@@ -49,7 +54,49 @@ class PanelContentScreen extends StatelessWidget {
                   //   color: Colors.black,
                   // ),
                   ),
-              onPressed: () {},
+              onPressed: () {
+                final balanceModel = context.read<BalanceModel>();
+                final currentBalance = balanceModel.balance;
+
+                // Get bid amount from TextFormField
+                final bidAmount =
+                    double.tryParse(bidAmountController.text) ?? 0.0;
+
+                // Check if bid amount is valid and sufficient
+                if (bidAmount <= 0) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Color.fromARGB(255, 138, 127, 24),
+                      content: Text('Please enter a valid bid amount.'),
+                    ),
+                  );
+                  Navigator.pop(context);
+
+                  return;
+                } else if (bidAmount > currentBalance) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text('Insufficient balance. Please add money.'),
+                    ),
+                  );
+                  Navigator.pop(context);
+
+                  return;
+                }
+
+                // Update balance in BalanceModel
+                balanceModel.addMoney(-bidAmount); // Deduct bid amount
+
+                // Show success message (assuming success after bid deduction)
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    backgroundColor: Colors.green,
+                    content: Text('Bid placed successfully!'),
+                  ),
+                );
+                Navigator.pop(context);
+              },
               child: const Text(
                 "Bid",
                 style: TextStyle(

@@ -17,7 +17,7 @@ class CardStyle extends StatelessWidget {
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
-                    builder: (context) => const PanelContentScreen(),
+                    builder: (context) => PanelContentScreen(),
                   );
                 },
                 child: Image.asset(

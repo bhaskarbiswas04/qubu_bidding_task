@@ -8,19 +8,21 @@ class WalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LogoAndName(),
-              SizedBox(height: 20),
-              WalletBalance(),
-              SizedBox(height: 20),
-              TransactionHistory(),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                LogoAndName(),
+                SizedBox(height: 20),
+                WalletBalance(),
+                SizedBox(height: 20),
+                TransactionHistory(),
+              ],
+            ),
           ),
         ),
       ),

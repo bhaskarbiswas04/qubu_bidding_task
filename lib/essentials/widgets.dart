@@ -1,5 +1,33 @@
 import 'package:flutter/material.dart';
 
+List<ImageProvider> images = const [
+  AssetImage('assets/avatars/avatarImg1.png'),
+  AssetImage('assets/avatars/avatarImg2.png'),
+  AssetImage('assets/avatars/avatarImg3.png'),
+  AssetImage('assets/avatars/avatarImg4.png'),
+  AssetImage('assets/avatars/avatarImg5.png'),
+  AssetImage('assets/avatars/avatarImg6.png'),
+  AssetImage('assets/avatars/avatarImg7.png'),
+  AssetImage('assets/avatars/avatarImg8.png'),
+  AssetImage('assets/avatars/avatarImg9.png'),
+  AssetImage('assets/avatars/avatarImg3.png'),
+  AssetImage('assets/avatars/avatarImg6.png'),
+  AssetImage('assets/avatars/avatarImg2.png'),
+
+  // Image(image: AssetImage('assets/avatars/avatarImg1.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg2.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg3.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg4.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg5.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg6.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg7.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg8.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg9.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg3.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg6.png')),
+  // Image(image: AssetImage('assets/avatars/avatarImg2.png')),
+];
+
 //widget for ElevatedButton
 class EleButton extends StatelessWidget {
   const EleButton({
@@ -35,19 +63,21 @@ class EleButton extends StatelessWidget {
 class GridAvatar extends StatelessWidget {
   const GridAvatar({
     super.key,
+    required this.avatarImage,
   });
+
+  final ImageProvider avatarImage;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 60.0,
       height: 100.0,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(35)),
-        color: Color(0xffA0E9FF),
-        image:
-            DecorationImage(image: AssetImage('assets/avatars/avatarImg2.png')),
+        borderRadius: const BorderRadius.all(Radius.circular(35)),
+        color: const Color(0xffA0E9FF),
+        image: DecorationImage(image: avatarImage),
       ),
     );
   }

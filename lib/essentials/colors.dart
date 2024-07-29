@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppColors {
-  static const Color color1 = Color(0xFFA0E9FF);
-  static const Color color2 = Color(0xFFd099f2);
-  static const Color color3 = Color(0xFFc8aaf0);
-  static const Color color4 = Color(0xFFedbed2);
-  static const Color color5 = Color(0xFFe8edaf);
-  static const Color color6 = Color(0xFFf0b4cc);
-}
+List<Color> appColor = const [
+  Color(0xFFA0E9FF),
+  Color(0xFFd099f2),
+  Color(0xFFc8aaf0),
+  Color(0xFFedbed2),
+  Color(0xFFe8edaf),
+  Color(0xFFf0b4cc)
+];
 
 class ColorContainer extends StatelessWidget {
   const ColorContainer({

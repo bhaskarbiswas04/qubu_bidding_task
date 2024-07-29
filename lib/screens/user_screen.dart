@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:qube_bidding/essentials/colors.dart';
 import 'package:qube_bidding/screens/home_screen.dart';
 import 'package:qube_bidding/essentials/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
+
+  @override
+  State<UserScreen> createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
+  int selectedColor = 0;
+  int selectedImage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +29,14 @@ class UserScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()));
-                        },
+                        onPressed: () {},
+
+                        // onPressed: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => const HomeScreen()));
+                        // },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black),
                         child: const Text(
@@ -40,12 +51,11 @@ class UserScreen extends StatelessWidget {
                 Container(
                   width: 128.0,
                   height: 128.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(35)),
-                    color: Color(0xffA0E9FF),
-                    image: DecorationImage(
-                        image: AssetImage('assets/avatars/avatarImg1.png')),
+                    borderRadius: const BorderRadius.all(Radius.circular(35)),
+                    color: appColor[selectedColor],
+                    image: DecorationImage(image: images[selectedImage]),
                   ),
                 ),
                 const SizedBox(
@@ -93,12 +103,16 @@ class UserScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const ColorContainer(setColor: AppColors.color1),
-                    const ColorContainer(setColor: AppColors.color2),
-                    const ColorContainer(setColor: AppColors.color3),
-                    const ColorContainer(setColor: AppColors.color4),
-                    const ColorContainer(setColor: AppColors.color5),
-                    const ColorContainer(setColor: AppColors.color6),
+                    ...List.generate(
+                        appColor.length,
+                        (index) => GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedColor = index;
+                              });
+                              // print("selected : $selectedColor");
+                            },
+                            child: ColorContainer(setColor: appColor[index]))),
                     Image.asset(
                       'assets/multiColor.png',
                       width: 45,
@@ -116,19 +130,16 @@ class UserScreen extends StatelessWidget {
                     crossAxisCount: 3,
                     mainAxisSpacing: 10.0,
                     crossAxisSpacing: 20.0,
-                    children: const [
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
-                      GridAvatar(),
+                    children: [
+                      ...List.generate(
+                          images.length,
+                          (index) => GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedImage = index;
+                                });
+                              },
+                              child: GridAvatar(avatarImage: images[index]))),
                     ],
                   ),
                 )

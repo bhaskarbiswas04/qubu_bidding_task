@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:qube_bidding/wallet-widgets/depositedUi.dart';
+import 'package:qube_bidding/wallet-widgets/BidPlacedUi.dart';
+
 import 'package:provider/provider.dart';
 
 class BalanceModel extends ChangeNotifier {
   double _balance = 0.0;
   final List<Deposit> _deposits = [];
+  final List<Bids> _bids = [];
 
   double get balance => _balance;
   List<Deposit> get deposits => _deposits;
+  List<Bids> get bids => _bids;
 
   void addMoney(double amount) {
     _balance += amount;
     _deposits.add(Deposit(amount));
+    notifyListeners();
+  }
+
+  void deductMoney(double amount) {
+    _balance -= amount;
+    _bids.add(Bids(amount));
     notifyListeners();
   }
 }

@@ -86,7 +86,7 @@ class PanelContentScreen extends StatelessWidget {
                 }
 
                 // Update balance in BalanceModel
-                balanceModel.addMoney(-bidAmount); // Deduct bid amount
+                balanceModel.deductMoney(bidAmount); // Deduct bid amount
 
                 // Show success message (assuming success after bid deduction)
                 ScaffoldMessenger.of(context).showSnackBar(

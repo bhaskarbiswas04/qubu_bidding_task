@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
-import 'package:provider/provider.dart';
+// import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
+// import 'package:provider/provider.dart';
 
 class Deposit {
   final double amount;

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
-// import 'package:provider/provider.dart';
 
 class Deposit {
   final double amount;
@@ -14,7 +12,6 @@ class DepositedUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final balanceModel = context.watch<BalanceModel>();
     return Row(
       children: [
         const SizedBox(width: 20),

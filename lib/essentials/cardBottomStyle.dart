@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qube_bidding/essentials/cardRightRow.dart';
+import 'package:qube_bidding/screens/panel_content_screen.dart';
+import 'package:provider/provider.dart';
 
 class CardBottomStyle extends StatelessWidget {
   const CardBottomStyle({
@@ -8,6 +10,8 @@ class CardBottomStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bidAmount = Provider.of<BidAmount>(context).bidAmount;
+
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 5, bottom: 10),
       child: Row(
@@ -43,7 +47,7 @@ class CardBottomStyle extends StatelessWidget {
                 decoration: const BoxDecoration(
                     color: Color.fromARGB(100, 21, 21, 21),
                     borderRadius: BorderRadius.all(Radius.circular(16))),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Row(
                     children: [
@@ -53,7 +57,7 @@ class CardBottomStyle extends StatelessWidget {
                             height: 12,
                           ),
                           SmallText(text: 'Top Bid'),
-                          BigText(text: '₹500'),
+                          BigText(text: '₹${bidAmount.toInt()}'),
                         ],
                       ),
                       SizedBox(width: 10),
@@ -67,14 +71,15 @@ class CardBottomStyle extends StatelessWidget {
                           Row(
                             children: [
                               SmallText(text: 'Bid #2'),
-                              SizedBox(width: 10),
+                              SizedBox(width: 4),
                               BigText(text: '₹460')
                             ],
                           ),
+                          SizedBox(height: 8),
                           Row(
                             children: [
                               SmallText(text: 'Bid #3'),
-                              SizedBox(width: 10),
+                              SizedBox(width: 4),
                               BigText(text: '₹420')
                             ],
                           )
@@ -112,7 +117,7 @@ class BigText extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-          fontSize: 25,
+          fontSize: 22,
           fontWeight: FontWeight.bold,
           color: Color.fromARGB(255, 255, 255, 255)),
     );

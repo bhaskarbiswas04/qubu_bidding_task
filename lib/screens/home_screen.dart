@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                     autoPlay: true,
                     floatingIndicator: true,
                     enableInfiniteScroll: true,
-                    autoPlayInterval: const Duration(seconds: 9),
+                    autoPlayInterval: const Duration(seconds: 6),
                     slideIndicator: CircularWaveSlideIndicator(),
                   ),
                 ),

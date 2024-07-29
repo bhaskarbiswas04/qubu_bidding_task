@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:qube_bidding/screens/wallet_screen.dart';
+import 'package:qube_bidding/wallet-widgets/walletBalance.dart';
+import 'package:provider/provider.dart';
 
 class SetAppbar extends StatelessWidget {
   const SetAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final balanceModel = context.watch<BalanceModel>();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -21,23 +26,30 @@ class SetAppbar extends StatelessWidget {
             )
           ],
         ),
-        const Card(
+        Card(
           elevation: 3,
           child: Padding(
-            padding: EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(5.0),
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.wallet,
                   size: 30,
                 ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '₹10,000',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                const SizedBox(width: 5),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const WalletScreen()));
+                  },
+                  child: Text(
+                    '₹${balanceModel.balance.toStringAsFixed(1)}',
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

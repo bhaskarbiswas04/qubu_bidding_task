@@ -4,24 +4,44 @@ import 'package:qube_bidding/wallet-widgets/BidPlacedUi.dart';
 
 import 'package:provider/provider.dart';
 
+enum TransactionType { Bid, Deposit }
+
+class Transaction {
+  final TransactionType type;
+  final double amount;
+
+  Transaction({
+    required this.type,
+    required this.amount,
+  });
+}
+
 class BalanceModel extends ChangeNotifier {
   double _balance = 0.0;
   final List<Deposit> _deposits = [];
   final List<Bids> _bids = [];
+  final List<Transaction> _transactions = [];
 
   double get balance => _balance;
   List<Deposit> get deposits => _deposits;
   List<Bids> get bids => _bids;
+  List<Transaction> get transactions => _transactions;
 
   void addMoney(double amount) {
     _balance += amount;
-    _deposits.add(Deposit(amount));
+    _transactions.add(Transaction(
+      type: TransactionType.Deposit, // Ensure this is correct
+      amount: amount,
+    ));
     notifyListeners();
   }
 
   void deductMoney(double amount) {
     _balance -= amount;
-    _bids.add(Bids(amount));
+    _transactions.add(Transaction(
+      type: TransactionType.Bid,
+      amount: amount,
+    ));
     notifyListeners();
   }
 }

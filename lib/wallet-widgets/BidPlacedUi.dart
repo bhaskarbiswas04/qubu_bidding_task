@@ -11,7 +11,10 @@ class Bids {
 class BidPlacedUi extends StatelessWidget {
   const BidPlacedUi({
     super.key,
+    required this.bid,
   });
+
+  final Bids bid;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class BidPlacedUi extends StatelessWidget {
                   ),
                   const SizedBox(width: 150),
                   Text(
-                    '-₹${bidAmount.toStringAsFixed(1)}',
+                    '-₹${bid.bidAmount.toStringAsFixed(1)}',
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),

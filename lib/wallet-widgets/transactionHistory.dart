@@ -27,11 +27,12 @@ class TransactionHistory extends StatelessWidget {
           shrinkWrap: true,
           // scrollDirection: Axis.vertical,
           physics: const ClampingScrollPhysics(), // Prevent inner scroll
-          itemCount: balanceModel.transactions.length, // Use transactions list
+          itemCount: balanceModel.transactions.length,
+          reverse: true,
           itemBuilder: (context, index) {
             final transaction = balanceModel.transactions[index];
             return transaction.type == TransactionType.Bid
-                ? const BidPlacedUi()
+                ? BidPlacedUi(bid: Bids(transaction.amount))
                 : DepositedUi(deposit: Deposit(transaction.amount));
           },
         ),

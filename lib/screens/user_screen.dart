@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:qube_bidding/essentials/colors.dart';
 import 'package:qube_bidding/screens/home_screen.dart';
 import 'package:qube_bidding/essentials/widgets.dart';
@@ -14,6 +15,32 @@ class UserScreen extends StatefulWidget {
 class _UserScreenState extends State<UserScreen> {
   int selectedColor = 0;
   int selectedImage = 0;
+  final TextEditingController _usernameController = TextEditingController();
+
+  String? storedUsername;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsername();
+  }
+
+  Future<void> _loadUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      storedUsername = prefs.getString('username');
+    });
+  }
+
+  Future<void> _saveUsername(String username) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('username', username);
+  }
+
+  Future<String?> getUsername() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('username');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +56,60 @@ class _UserScreenState extends State<UserScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          final username = _usernameController.text.trim();
+                          if (username.isEmpty) {
+                            // Handle empty username
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Please enter a username'),
+                              ),
+                            );
+                            return;
+                          }
 
-                        // onPressed: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => const HomeScreen()));
-                        // },
+                          final storedUsername = await getUsername();
+
+                          if (storedUsername != null &&
+                              storedUsername == username) {
+                            // Existing user, show popup
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: const Text(
+                                  'Existing User',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                                content: const Text(
+                                    'You are already a registered user.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              ),
+                            );
+                            return;
+                          }
+
+                          // Save username
+                          await _saveUsername(username);
+
+                          // Show success message
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              backgroundColor: Colors.green,
+                              content: Text('Username saved successfully'),
+                            ),
+                          );
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
+
+                          _usernameController.clear();
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black),
                         child: const Text(
@@ -73,6 +146,7 @@ class _UserScreenState extends State<UserScreen> {
                     ],
                   ),
                   child: TextField(
+                    controller: _usernameController,
                     decoration: InputDecoration(
                       hintText: 'Username',
                       hintStyle: const TextStyle(

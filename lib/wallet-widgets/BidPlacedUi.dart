@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qube_bidding/screens/panel_content_screen.dart';
-import 'package:provider/provider.dart';
 
 class Bids {
   final double bidAmount;
@@ -17,8 +15,6 @@ class BidPlacedUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bidAmount = Provider.of<BidAmount>(context).bidAmount;
-
     return Row(
       children: [
         ClipRRect(

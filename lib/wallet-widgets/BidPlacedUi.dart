@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:qube_bidding/screens/panel_content_screen.dart';
 import 'package:provider/provider.dart';
 
